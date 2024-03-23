@@ -878,18 +878,26 @@ $settings['migrate_node_migrate_type_classic'] = FALSE;
  * Keep this code block at the end of this file to take full effect.
  */
 
+use Symfony\Component\Dotenv\Dotenv;
+// Error reporting:
+$config['system.logging']['error_level'] = 'verbose';
+
+
+$dotenv = new Dotenv();
+$dotenv->load(__DIR__.'/../../../.env');
+
 if (file_exists($app_root . '/' . $site_path . '/settings.local.php')) {
   include $app_root . '/' . $site_path . '/settings.local.php';
 }
 $databases['default']['default'] = array (
-  'database' => 'drupal',
-  'username' => 'myuser',
-  'password' => 'mypassword',
-  'prefix' => '',
-  'host' => 'localhost',
-  'port' => '5432',
-  'driver' => 'pgsql',
-  'namespace' => 'Drupal\\pgsql\\Driver\\Database\\pgsql',
-  'autoload' => 'core/modules/pgsql/src/Driver/Database/pgsql/',
+  'database' => $_ENV['DB_NAME'],
+  'username' => $_ENV['DB_USER'],
+  'password' => $_ENV['DB_PASSWORD'],
+  'prefix' => $_ENV['DB_PREFIX'],
+  'host' => $_ENV['DB_HOST'],
+  'port' => $_ENV['DB_PORT'],
+  'driver' => $_ENV['DB_DRIVER'],
+  'namespace' => $_ENV['DB_NAMESPACE'],
+  'autoload' => $_ENV['DB_AUTOLOAD'],
 );
 $settings['config_sync_directory'] = 'sites/default/files/config_7r-D3TlWMZ8923A_rz00aCP92qcd1hNFpbmPKP_405zmEAUXBwE_7ruxkczsZl7hLmG7fKJ4fA/sync';
