@@ -154,6 +154,8 @@ $settings['trusted_host_patterns'] = [
   '^localhost$',
   '127\.0\.0\.1',
 ];
+// Error reporting:
+$config['system.logging']['error_level'] = 'verbose';
 
 use Symfony\Component\Dotenv\Dotenv;
 $dotenv = new Dotenv();
