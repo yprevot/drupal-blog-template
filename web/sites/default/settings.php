@@ -882,13 +882,13 @@ use Symfony\Component\Dotenv\Dotenv;
 // Error reporting:
 $config['system.logging']['error_level'] = 'verbose';
 
-
-$dotenv = new Dotenv();
-$dotenv->load(__DIR__.'/../../../.env');
-
 if (file_exists($app_root . '/' . $site_path . '/settings.local.php')) {
   include $app_root . '/' . $site_path . '/settings.local.php';
 }
+/*
+$dotenv = new Dotenv();
+$dotenv->load(__DIR__.'/../../../.env');
+
 $databases['default']['default'] = array (
   'database' => $_ENV['DB_NAME'],
   'username' => $_ENV['DB_USER'],
@@ -900,4 +900,5 @@ $databases['default']['default'] = array (
   'namespace' => $_ENV['DB_NAMESPACE'],
   'autoload' => $_ENV['DB_AUTOLOAD'],
 );
+*/
 $settings['config_sync_directory'] = 'sites/default/files/config_7r-D3TlWMZ8923A_rz00aCP92qcd1hNFpbmPKP_405zmEAUXBwE_7ruxkczsZl7hLmG7fKJ4fA/sync';

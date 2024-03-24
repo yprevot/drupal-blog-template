@@ -154,3 +154,19 @@ $settings['trusted_host_patterns'] = [
   '^localhost$',
   '127\.0\.0\.1',
 ];
+
+
+$dotenv = new Dotenv();
+$dotenv->load(__DIR__.'/../../../.env');
+
+$databases['default']['default'] = array (
+  'database' => $_ENV['DB_NAME'],
+  'username' => $_ENV['DB_USER'],
+  'password' => $_ENV['DB_PASSWORD'],
+  'prefix' => $_ENV['DB_PREFIX'],
+  'host' => $_ENV['DB_HOST'],
+  'port' => $_ENV['DB_PORT'],
+  'driver' => $_ENV['DB_DRIVER'],
+  'namespace' => $_ENV['DB_NAMESPACE'],
+  'autoload' => $_ENV['DB_AUTOLOAD'],
+);
