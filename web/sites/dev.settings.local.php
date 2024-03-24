@@ -157,18 +157,11 @@ $settings['trusted_host_patterns'] = [
 // Error reporting:
 $config['system.logging']['error_level'] = 'verbose';
 
-use Symfony\Component\Dotenv\Dotenv;
-$dotenv = new Dotenv();
-$dotenv->load(__DIR__.'/../../../.env');
-
 $databases['default']['default'] = array (
-  'database' => $_ENV['DB_NAME'],
-  'username' => $_ENV['DB_USER'],
-  'password' => $_ENV['DB_PASSWORD'],
-  'prefix' => $_ENV['DB_PREFIX'],
-  'host' => $_ENV['DB_HOST'],
-  'port' => $_ENV['DB_PORT'],
-  'driver' => $_ENV['DB_DRIVER'],
-  'namespace' => $_ENV['DB_NAMESPACE'],
-  'autoload' => $_ENV['DB_AUTOLOAD'],
+  'database' => 'sites/default/files/db/database.sqlite',
+  'prefix' => '',
+  'driver' => 'sqlite',
+  'namespace' => 'Drupal\\sqlite\\Driver\\Database\\sqlite',
+  'autoload' => 'core/modules/sqlite/src/Driver/Database/sqlite/',
 );
+

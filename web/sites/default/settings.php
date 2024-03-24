@@ -286,7 +286,7 @@ $databases = [];
  *   $settings['hash_salt'] = file_get_contents('/home/example/salt.txt');
  * @endcode
  */
-$settings['hash_salt'] = '11-TwUWsG8ojL8azqYqegr9ya5KHP6s4U-apxGqOcIYrcKkka2tNj-UI7wkafFvlyIEV6a3jwQ';
+$settings['hash_salt'] = 'vi2gLF81C-LKnhoyuD0MJc-vEXFg2eXZmn4cZpBPcmKz7ZfQ4c1hrcBf97L-CZeoJ1KS1rqUCg';
 
 /**
  * Deployment identifier.
@@ -878,24 +878,27 @@ $settings['migrate_node_migrate_type_classic'] = FALSE;
  * Keep this code block at the end of this file to take full effect.
  */
 
-if (file_exists($app_root . '/' . $site_path . '/settings.local.php')) {
-  include $app_root . '/' . $site_path . '/settings.local.php';
-}
-/*
+$settings['config_sync_directory'] = 'sites/default/files/sync_directory/sync';
+
+
 use Symfony\Component\Dotenv\Dotenv;
 $dotenv = new Dotenv();
 $dotenv->load(__DIR__.'/../../../.env');
 
-$databases['default']['default'] = array (
-  'database' => $_ENV['DB_NAME'],
-  'username' => $_ENV['DB_USER'],
-  'password' => $_ENV['DB_PASSWORD'],
-  'prefix' => $_ENV['DB_PREFIX'],
-  'host' => $_ENV['DB_HOST'],
-  'port' => $_ENV['DB_PORT'],
-  'driver' => $_ENV['DB_DRIVER'],
-  'namespace' => $_ENV['DB_NAMESPACE'],
-  'autoload' => $_ENV['DB_AUTOLOAD'],
-);
-*/
-$settings['config_sync_directory'] = 'sites/default/files/config_7r-D3TlWMZ8923A_rz00aCP92qcd1hNFpbmPKP_405zmEAUXBwE_7ruxkczsZl7hLmG7fKJ4fA/sync';
+if($_ENV['APP_ENV'] == 'prod'){
+  $databases['default']['default'] = array (
+    'database' => $_ENV['DB_NAME'],
+    'username' => $_ENV['DB_USER'],
+    'password' => $_ENV['DB_PASSWORD'],
+    'prefix' => $_ENV['DB_PREFIX'],
+    'host' => $_ENV['DB_HOST'],
+    'port' => $_ENV['DB_PORT'],
+    'driver' => $_ENV['DB_DRIVER'],
+    'namespace' => $_ENV['DB_NAMESPACE'],
+    'autoload' => $_ENV['DB_AUTOLOAD'],
+  );
+}else if (file_exists($app_root . '/' . $site_path . '/settings.local.php')) {
+  include $app_root . '/' . $site_path . '/settings.local.php';
+}
+
+
