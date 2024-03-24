@@ -157,11 +157,4 @@ $settings['trusted_host_patterns'] = [
 // Error reporting:
 $config['system.logging']['error_level'] = 'verbose';
 
-$databases['default']['default'] = array (
-  'database' => 'sites/default/files/db/database.sqlite',
-  'prefix' => '',
-  'driver' => 'sqlite',
-  'namespace' => 'Drupal\\sqlite\\Driver\\Database\\sqlite',
-  'autoload' => 'core/modules/sqlite/src/Driver/Database/sqlite/',
-);
 

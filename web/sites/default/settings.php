@@ -880,25 +880,23 @@ $settings['migrate_node_migrate_type_classic'] = FALSE;
 
 $settings['config_sync_directory'] = 'sites/default/files/sync_directory/sync';
 
+if (file_exists($app_root . '/' . $site_path . '/settings.local.php')) {
+  include $app_root . '/' . $site_path . '/settings.local.php';
+}
 
 use Symfony\Component\Dotenv\Dotenv;
 $dotenv = new Dotenv();
 $dotenv->load(__DIR__.'/../../../.env');
 
-if($_ENV['APP_ENV'] == 'prod'){
-  $databases['default']['default'] = array (
-    'database' => $_ENV['DB_NAME'],
-    'username' => $_ENV['DB_USER'],
-    'password' => $_ENV['DB_PASSWORD'],
-    'prefix' => $_ENV['DB_PREFIX'],
-    'host' => $_ENV['DB_HOST'],
-    'port' => $_ENV['DB_PORT'],
-    'driver' => $_ENV['DB_DRIVER'],
-    'namespace' => $_ENV['DB_NAMESPACE'],
-    'autoload' => $_ENV['DB_AUTOLOAD'],
-  );
-}else if (file_exists($app_root . '/' . $site_path . '/settings.local.php')) {
-  include $app_root . '/' . $site_path . '/settings.local.php';
-}
-
+$databases['default']['default'] = array (
+  'database' => $_ENV['DB_NAME'],
+  'username' => $_ENV['DB_USER'],
+  'password' => $_ENV['DB_PASSWORD'],
+  'prefix' => $_ENV['DB_PREFIX'],
+  'host' => $_ENV['DB_HOST'],
+  'port' => $_ENV['DB_PORT'],
+  'driver' => $_ENV['DB_DRIVER'],
+  'namespace' => $_ENV['DB_NAMESPACE'],
+  'autoload' => $_ENV['DB_AUTOLOAD'],
+);
 
