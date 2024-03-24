@@ -155,7 +155,7 @@ $settings['trusted_host_patterns'] = [
   '127\.0\.0\.1',
 ];
 
-
+use Symfony\Component\Dotenv\Dotenv;
 $dotenv = new Dotenv();
 $dotenv->load(__DIR__.'/../../../.env');
 
